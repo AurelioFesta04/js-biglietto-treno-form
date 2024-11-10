@@ -18,7 +18,7 @@
                 <h1>Calacola il prezzo del tuo biglietto</h1>
             </div>
             <form action="" id="user-form">
-                <div>
+                <div class="card">
                     <div class="row">
                         <div class="col">
                             <label class="form-label" for="username">Nome e Congnome</label>
@@ -31,16 +31,16 @@
                         </div>
                         <div class="col">
                             <select name="form-select" id="eta">
-                                <option value="maggiorenne">Maggiorenne</option>
-                                <option value="minorenne">Minorenne</option>
-                                <option value="over65">Over 65</option>
+                                <option value="maggiorenne">Maggiorenne (da 18 a 64)</option>
+                                <option value="minorenne">Minorenne (da 0 a 17)</option>
+                                <option value="over65">Over 65 (da 64 in poi)</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <button id="submit-btn" type="submit">
-                                Genera 
+                                Genera
                             </button>
                         </div>
                         <div class="col">
@@ -52,16 +52,16 @@
                 </div>
             </form>
         </div>
-        <div>
+        <div class="d-none">
             <div>
                 <h1>Il tuo biglietto</h1>
             </div>
             <div>
                 <h3>Dettaglio passeggeri</h3>
-                <div>
+                <div class="card">
                     <div>
                         <h3>Nome passeggero</h3>
-                        <h4>Jon Snow</h4>
+                        <h4 id="nome-passeggero"></h4>
                     </div>
                     <div>
                         <table>
