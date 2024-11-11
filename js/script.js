@@ -14,7 +14,7 @@ let cpCodeElem = document.getElementById("codice-cp");
 const totalCostElem = document.getElementById("costo-totale");
 
 formElem.addEventListener("submit", function (event) {
-    console.log(event);
+    
     event.preventDefault();
 
     const username = usernameInput.value.trim();
@@ -22,27 +22,25 @@ formElem.addEventListener("submit", function (event) {
     const eta = parseInt(etaInput.value.trim());
 
     const kmPrice = 0.21;
-    prezzoBase = (km * kmPrice);
-    let sconto = 0;
+    const prezzoBase = (km * kmPrice);
+    let percentualeSconto = 0;
 
 
-    if (eta < 18) {
-        offerPercElem.innerHTML = ("20%");
-        sconto = 0.2;
-    } else if (eta >= 65) {
-        offerPercElem.innerHTML = ("40%");
-        sconto = 0.4;
+    if (eta === "Minorenne (da 0 a 17)") {
+        percentualeSconto = 20;
+    } else if (eta === "Over 65 (da 65 in poi)") {
+        percentualeSconto = 40;
     } else {
-        offerPercElem.innerHTML = ("0%");
-        sconto = 0;
+        percentualeSconto = 0;
     }
 
+    let prezzoConSconto = (prezzoBase - (prezzoBase * percentualeSconto)).toFixed(2);
 
     passengerNameElem.innerHTML = username;
-    offerPercElem.innerHTML = `${sconto}%`;
+    offerPercElem.innerHTML = `${percentualeSconto}%`;
     wagonNumElem.innerHTML = Math.floor((Math.random() * 10) + 1);
-    cpCodeElem.innerHTML = Math.floor((Math.random() * 99999) + 1);
-    totalCostElem.innerHTML = (prezzoBase - (prezzoBase * sconto)).toFixed(2);
+    cpCodeElem.innerHTML = Math.floor((Math.random() * 99999) + 10000);
+    totalCostElem.innerHTML = `${prezzoConSconto}€`;
 
     cardElem.classList.remove("d-none");
 
